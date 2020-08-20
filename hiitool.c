@@ -11,6 +11,7 @@ int main(int argc, char **argv)
   UINTN buflen;
   EFI_HII_HANDLE dummybufptr;
   EFI_HII_HANDLE *HiiHandleBuffer;
+  EFI_PHYSICAL_ADDRESS bufaddr;
 
   efi_status = gBS->LocateProtocol (&gEfiHiiDatabaseProtocolGuid, NULL, (VOID **) &HiiDatabase);
   if (EFI_ERROR (efi_status)) { return 1; }
@@ -28,10 +29,15 @@ int main(int argc, char **argv)
   if (efi_status != EFI_BUFFER_TOO_SMALL) {
     return 1;
   }
+/*
   HiiHandleBuffer = AllocateZeroPool (buflen + sizeof (EFI_HII_HANDLE));
   if (HiiHandleBuffer == NULL) {
+*/
+  efi_status = gBS->AllocatePages (AllocateAnyPages, EfiBootServicesData, EFI_SIZE_TO_PAGES(buflen), &bufaddr);
+  if (EFI_ERROR (efi_status)) {
     return 1;
   }
+  HiiHandleBuffer = (EFI_HII_HANDLE) bufaddr;
   efi_status = HiiDatabase->ListPackageLists (
                HiiDatabase,
                EFI_HII_PACKAGE_SIMPLE_FONTS,
@@ -39,10 +45,16 @@ int main(int argc, char **argv)
                &buflen,
                HiiHandleBuffer); 
   if (EFI_ERROR (efi_status)) {
+/*
     FreePool (HiiHandleBuffer);
+*/
+    gBS->FreePages (bufaddr, buflen);
     return 1;
   }
+/*
   FreePool (HiiHandleBuffer);
+*/
+  gBS->FreePages (bufaddr, buflen);
   printf("all OK\n");
   return 0;
 }
