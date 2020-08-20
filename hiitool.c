@@ -17,6 +17,8 @@ int main(int argc, char **argv)
   efi_status = gBS->LocateProtocol (&gEfiHiiConfigRoutingProtocolGuid, NULL, (VOID **) &HiiConfigRouting);
   if (EFI_ERROR (efi_status)) { return 1; }
 
+  buflen = 0;
+  dummybufptr = NULL;
   efi_status = HiiDatabase->ListPackageLists (
                HiiDatabase,
                EFI_HII_PACKAGE_SIMPLE_FONTS,
