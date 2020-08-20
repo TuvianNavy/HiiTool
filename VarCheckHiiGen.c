@@ -111,6 +111,7 @@ DumpHiiPackage (
   )
 {
   EFI_HII_PACKAGE_HEADER        *HiiPackageHeader;
+  EFI_HII_SIMPLE_FONT_PACKAGE_HDR *SimpleFontPkgHdr;
 
   HiiPackageHeader = (EFI_HII_PACKAGE_HEADER *) HiiPackage;
 
@@ -118,6 +119,11 @@ DumpHiiPackage (
   printf ("  HiiPackageHeader->Length - %10d\n", HiiPackageHeader->Length);
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Type   - 0x%02x (%a)\n", HiiPackageHeader->Type, HiiPackageTypeToStr ((UINT8) HiiPackageHeader->Type)));
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Length - 0x%06x\n", HiiPackageHeader->Length));
+  if (HiiPackageHeader->Type == EFI_HII_PACKAGE_SIMPLE_FONTS) {
+  SimpleFontPkgHdr = (EFI_HII_SIMPLE_FONT_PACKAGE_HDR *) HiiPackage;
+  printf ("  SimpleFontPkgHdr->#OfNarrowGlyphs - %3hd\n", SimpleFontPkgHdr->NumberOfNarrowGlyphs);
+  printf ("  SimpleFontPkgHdr->#OfWideGlyphs - %3hd\n", SimpleFontPkgHdr->NumberOfWideGlyphs);
+  }
 
 }
 
