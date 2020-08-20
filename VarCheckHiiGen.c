@@ -115,7 +115,7 @@ DumpHiiPackage (
   HiiPackageHeader = (EFI_HII_PACKAGE_HEADER *) HiiPackage;
 
   printf ("  HiiPackageHeader->Type   - 0x%02x (%s)\n", HiiPackageHeader->Type, HiiPackageTypeToStr ((UINT8) HiiPackageHeader->Type));
-  printf ("  HiiPackageHeader->Length - 0x%06x\n", HiiPackageHeader->Length);
+  printf ("  HiiPackageHeader->Length - %10d\n", HiiPackageHeader->Length);
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Type   - 0x%02x (%a)\n", HiiPackageHeader->Type, HiiPackageTypeToStr ((UINT8) HiiPackageHeader->Type)));
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Length - 0x%06x\n", HiiPackageHeader->Length));
 
@@ -142,6 +142,9 @@ DumpHiiDatabase (
   HiiPackageListHeader = (EFI_HII_PACKAGE_LIST_HEADER *) HiiDatabase;
 
   while ((UINTN) HiiPackageListHeader < ((UINTN) HiiDatabase + HiiDatabaseSize)) {
+    /* TODO: Guid represents still wrong */
+    printf ("HiiPackageListHeader->PackageListGuid - %32llX\n", &HiiPackageListHeader->PackageListGuid);
+    printf ("HiiPackageListHeader->PackageLength   - %12d\n", (UINTN)HiiPackageListHeader->PackageLength);
     DEBUG ((DEBUG_INFO, "HiiPackageListHeader->PackageListGuid - %g\n", &HiiPackageListHeader->PackageListGuid));
     DEBUG ((DEBUG_INFO, "HiiPackageListHeader->PackageLength   - 0x%x\n", (UINTN)HiiPackageListHeader->PackageLength));
     HiiPackageHeader = (EFI_HII_PACKAGE_HEADER *)(HiiPackageListHeader + 1);
