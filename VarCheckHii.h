@@ -9,16 +9,13 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #ifndef _VAR_CHECK_HII_H_
 #define _VAR_CHECK_HII_H_
 
-/* StdLib/Include */
-#include <stdio.h>
-/* MdePkg/Include */
-#include <Base.h>
-#include <Library/BaseMemoryLib.h>
 #include <Library/BaseLib.h>
 #include <Library/DebugLib.h>
-#include <Library/MemoryAllocationLib.h>
+#include <Library/BaseMemoryLib.h>
 #include <Library/UefiBootServicesTableLib.h>
-/* MdeModulePkg/Include */
+#include <Library/MemoryAllocationLib.h>
+#include <stdio.h>
+#include <Base.h>
 #include <Library/UefiHiiServicesLib.h>
 
 
