@@ -1,6 +1,9 @@
+/* StdLib/Include */
 #include <stdio.h>
+/* MdePkg/Include */
 #include <Library/MemoryAllocationLib.h>
 #include <Library/UefiBootServicesTableLib.h>
+/* MdeModulePkg/Include */
 #include <Library/UefiHiiServicesLib.h>
 
 int main(int argc, char **argv)
@@ -9,8 +12,7 @@ int main(int argc, char **argv)
   EFI_HII_CONFIG_ROUTING_PROTOCOL *HiiConfigRouting;
   EFI_STATUS efi_status;
   UINTN buflen;
-  EFI_HII_HANDLE dummybufptr;
-  EFI_HII_HANDLE *HiiHandleBuffer;
+  EFI_HII_PACKAGE_LIST_HEADER *HiiHandleBuffer;
   EFI_PHYSICAL_ADDRESS bufaddr;
 
   efi_status = gBS->LocateProtocol (&gEfiHiiDatabaseProtocolGuid, NULL, (VOID **) &HiiDatabase);
@@ -19,13 +21,11 @@ int main(int argc, char **argv)
   if (EFI_ERROR (efi_status)) { return 1; }
 
   buflen = 0;
-  dummybufptr = NULL;
-  efi_status = HiiDatabase->ListPackageLists (
+  efi_status = HiiDatabase->ExportPackageLists (
                HiiDatabase,
-               EFI_HII_PACKAGE_SIMPLE_FONTS,
-               NULL,
+               0,
                &buflen,
-               &dummybufptr);
+               NULL);
   if (efi_status != EFI_BUFFER_TOO_SMALL) {
     return 1;
   }
@@ -38,10 +38,9 @@ int main(int argc, char **argv)
     return 1;
   }
   HiiHandleBuffer = (EFI_HII_HANDLE) bufaddr;
-  efi_status = HiiDatabase->ListPackageLists (
+  efi_status = HiiDatabase->ExportPackageLists (
                HiiDatabase,
-               EFI_HII_PACKAGE_SIMPLE_FONTS,
-               NULL,
+               0,
                &buflen,
                HiiHandleBuffer); 
   if (EFI_ERROR (efi_status)) {
