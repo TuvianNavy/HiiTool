@@ -9,23 +9,24 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #ifndef _VAR_CHECK_HII_H_
 #define _VAR_CHECK_HII_H_
 
-#include <Library/VarCheckLib.h>
+/* StdLib/Include */
+#include <stdio.h>
+/* MdePkg/Include */
+#include <Base.h>
+#include <Library/BaseMemoryLib.h>
 #include <Library/BaseLib.h>
 #include <Library/DebugLib.h>
-#include <Library/BaseMemoryLib.h>
-#include <Library/UefiBootServicesTableLib.h>
 #include <Library/MemoryAllocationLib.h>
+#include <Library/UefiBootServicesTableLib.h>
+/* MdeModulePkg/Include */
+#include <Library/UefiHiiServicesLib.h>
 
-#include <Guid/MdeModuleHii.h>
 
-#include <Protocol/HiiDatabase.h>
-#include <Protocol/FirmwareVolume2.h>
-#include <Protocol/FirmwareVolumeBlock.h>
 
 #include "InternalVarCheckStructure.h"
 #include "VarCheckHiiGen.h"
 
-//#define DUMP_VAR_CHECK_HII
+#define DUMP_VAR_CHECK_HII
 //#define DUMP_HII_DATA
 
 typedef struct {

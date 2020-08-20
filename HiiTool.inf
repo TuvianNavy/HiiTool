@@ -25,9 +25,11 @@
   UefiBootServicesTableLib
   UefiHiiServicesLib
   ShellCEntryLib
+  BaseLib
 
 [Sources]
   hiitool.c
+  VarCheckHiiGen.c
 
 [Packages]
   StdLib/StdLib.dec

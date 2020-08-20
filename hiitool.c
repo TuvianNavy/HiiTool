@@ -38,6 +38,7 @@ int main(int argc, char **argv)
     return 1;
   }
   HiiHandleBuffer = (EFI_HII_HANDLE) bufaddr;
+  printf ("allocated 4K blocks larger than %d bytes\n", buflen);
   efi_status = HiiDatabase->ExportPackageLists (
                HiiDatabase,
                0,
