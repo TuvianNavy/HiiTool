@@ -1,10 +1,4 @@
-/* StdLib/Include */
-#include <stdio.h>
-/* MdePkg/Include */
-#include <Library/MemoryAllocationLib.h>
-#include <Library/UefiBootServicesTableLib.h>
-/* MdeModulePkg/Include */
-#include <Library/UefiHiiServicesLib.h>
+#include "VarCheckHiiGen.h"
 
 int main(int argc, char **argv)
 {
@@ -51,6 +45,7 @@ int main(int argc, char **argv)
     gBS->FreePages (bufaddr, buflen);
     return 1;
   }
+  DumpHiiDatabase (HiiHandleBuffer, buflen);
 /*
   FreePool (HiiHandleBuffer);
 */

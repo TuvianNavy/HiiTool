@@ -23,8 +23,8 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include "InternalVarCheckStructure.h"
 #include "VarCheckHiiGen.h"
 
-#define DUMP_VAR_CHECK_HII
-//#define DUMP_HII_DATA
+// #define DUMP_VAR_CHECK_HII
+#define DUMP_HII_DATA
 
 typedef struct {
   UINT8     HiiOpCode;

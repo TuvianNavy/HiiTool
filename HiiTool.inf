@@ -28,8 +28,11 @@
   BaseLib
 
 [Sources]
-  hiitool.c
+  InternalVarCheckStructure.h
+  VarCheckHiiGen.h
+  VarCheckHii.h
   VarCheckHiiGen.c
+  hiitool.c
 
 [Packages]
   StdLib/StdLib.dec

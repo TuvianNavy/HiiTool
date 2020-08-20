@@ -111,13 +111,8 @@ DumpHiiPackage (
   )
 {
   EFI_HII_PACKAGE_HEADER        *HiiPackageHeader;
-  EFI_IFR_OP_HEADER             *IfrOpCodeHeader;
-  EFI_IFR_VARSTORE              *IfrVarStore;
-  EFI_IFR_VARSTORE_EFI          *IfrEfiVarStore;
-  BOOLEAN                       QuestionStoredInBitField;
 
   HiiPackageHeader = (EFI_HII_PACKAGE_HEADER *) HiiPackage;
-  QuestionStoredInBitField = FALSE;
 
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Type   - 0x%02x (%a)\n", HiiPackageHeader->Type, HiiPackageTypeToStr ((UINT8) HiiPackageHeader->Type)));
   DEBUG ((DEBUG_INFO, "  HiiPackageHeader->Length - 0x%06x\n", HiiPackageHeader->Length));
