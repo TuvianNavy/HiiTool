@@ -1,4 +1,4 @@
 # HiiTool
 
 ## What?
-Essentially a rough and drastically reduced port of edk2/MdeModulePkg/Library/VarCheckHiiLib to UEFI shell environment. Speciallized to font/keymap tweaks.
+Essentially a rough and drastically reduced port of edk2/MdeModulePkg/Library/VarCheckHiiLib to UEFI shell environment.
