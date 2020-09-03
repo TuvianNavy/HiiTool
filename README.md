@@ -1,7 +1,7 @@
 # HiiTool
 
 ## What?
-Essentially a rough and drastically reduced port of edk2/MdeModulePkg/Library/VarCheckHiiLib to UEFI shell environment.
+A tool for reading UEFI HII database. Essentially a rough and drastically reduced port of edk2/MdeModulePkg/Library/VarCheckHiiLib to UEFI shell environment.
 
 ## requirements
 
